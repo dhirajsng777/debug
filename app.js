@@ -5,6 +5,7 @@ var debug = require('debug');
 var router = express.Router();
 
 debugError = debug('error');
+debugWarn = debug('warn');
 // Tell express to use this router with /api before.
 // You can put just '/' if you don't want any sub path before routes.
 app.use("/api",router);
@@ -18,6 +19,7 @@ router.use(function(req,res,next) {
 router.use("/user/:id",function(req,res,next){
   console.log(req.params.id)
   debugError('error happened');
+  debugError('warn happened');
   if(req.params.id == 0) {
     res.json({"message" : "You must pass ID other than 0"});    
   }
